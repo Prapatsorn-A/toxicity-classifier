@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxicity Classifier</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 700px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #005f73;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            resize: vertical;
+            font-family: 'Arial', sans-serif;
+        }
+
+        button {
+            background-color: #005f73;
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0a9396;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #e9f5f4;
+            border: 1px solid #c1d8d6;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .result span {
+            font-weight: bold;
+        }
+
+        .entered-text {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border: 1px solid #bcd6eb;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 1.1rem;
+            word-wrap: break-word;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #005f73;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Toxicity Classifier</h1>
+        <form method="POST">
+            <textarea name="text" placeholder="Enter text to classify..." required></textarea>
+            <button type="submit">Classify Text</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <strong>Classification:</strong> <span>{{ result }}</span>
+        </div>
+        <div class="entered-text">
+            <strong>Entered Text:</strong>
+            <p>{{ request.form['text'] }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
